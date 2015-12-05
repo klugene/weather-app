@@ -1,7 +1,7 @@
 require "yahoo_weatherman"
 
 zipcode = ""
-if !ARGV
+if !ARGV[0]
  	puts "Curious about the weather today? Tell me your zip code!"
 	zipcode = gets
 else
@@ -21,8 +21,8 @@ end
 
 def get_extended_forecast(zipcode)
 	puts "Do you want the extended forecast [Y/N]?"
-	answer = gets.chomp
-	if answer == 'Y'
+	answer = gets.chomp.downcase
+	if answer == 'y'
 		forecasts = @lookup.forecasts
 		forecasts.each do |forecast|
 			low = forecast['low']
